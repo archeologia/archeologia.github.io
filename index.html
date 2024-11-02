@@ -16,6 +16,15 @@
       margin: 0;
     }
 
+    .text-content {
+      line-height: 20px;
+    }
+
+    .text-main-content {
+      line-height: 30px;
+      font-size: 1.2rem;
+    }
+
     #iau9 {
       font-family: Arial, Helvetica, sans-serif;
       background-image: linear-gradient(180deg, rgba(59, 130, 245, 0.11), white 14%);
@@ -25,6 +34,125 @@
       background-attachment: scroll;
       background-origin: padding-box;
       color: #475569;
+    }
+
+    .gjs-grid-column.feature-item {
+      padding-top: 15px;
+      padding-right: 15px;
+      padding-bottom: 15px;
+      padding-left: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      min-width: 30%;
+    }
+
+    .gjs-grid-column.testimonial-item {
+      padding-top: 15px;
+      padding-right: 15px;
+      padding-bottom: 15px;
+      padding-left: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      min-width: 45%;
+      background-color: rgba(247, 247, 247, 0.23);
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+      align-items: flex-start;
+      border-top-width: 1px;
+      border-right-width: 1px;
+      border-bottom-width: 1px;
+      border-left-width: 1px;
+      border-top-style: solid;
+      border-right-style: solid;
+      border-bottom-style: solid;
+      border-left-style: solid;
+      border-top-color: rgba(0, 0, 0, 0.06);
+      border-right-color: rgba(0, 0, 0, 0.06);
+      border-bottom-color: rgba(0, 0, 0, 0.06);
+      border-left-color: rgba(0, 0, 0, 0.06);
+    }
+
+    .gjs-button {
+      vertical-align: top;
+      max-width: 100%;
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+      padding-right: 15px;
+      padding-bottom: 10px;
+      padding-left: 15px;
+      background-color: rgb(36, 99, 235);
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+      padding-top: 10px;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    .gjs-text-blue {
+      color: rgb(36, 99, 235);
+    }
+
+    .gjs-link:hover {
+      color: rgb(36, 99, 235);
+      text-decoration: underline;
+    }
+
+    .gjs-icon.gjs-feature-icon {
+      padding-top: 10px;
+      padding-right: 10px;
+      padding-bottom: 10px;
+      padding-left: 10px;
+      background-color: rgb(36, 99, 235);
+      color: white;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .gjs-grid-column {
+      flex: 1 1 0%;
+      padding: 5px 0;
+    }
+
+    .gjs-grid-row {
+      display: flex;
+      justify-content: flex-start;
+      align-items: stretch;
+      flex-direction: row;
+      min-height: auto;
+      padding: 10px 0;
+    }
+
+    #iif6x {
+      width: 800px;
+      height: 600px;
+    }
+
+    #itk1b {
+      padding-top: 10px;
+      padding-right: 84px;
+      padding-bottom: 46px;
+      padding-left: 0px;
+      margin-top: 0px;
+      margin-right: 0px;
+      margin-bottom: 0px;
+      margin-left: 0px;
     }
 
     .gjs-container {
@@ -61,10 +189,53 @@
       padding-left: 0px;
     }
 
-    #openlime {
-      width: 800px;
-      height: 600px;
-      background-color: black; /* Colore di sfondo per il contenitore */
+    #icbnu {
+      background-color: rgba(0, 0, 0, 1);
+    }
+
+    .gjs-image-box {
+      height: 200px;
+      width: 100%;
+    }
+
+    #iwp52 {
+      background-image: url('https://ugc.production.linktr.ee/af27c430-df2b-4ab9-add3-49f90bfac3a5_Screenshot-2024-10-31-alle-03.29.58.png');
+      background-size: contain;
+      background-position: center center;
+      background-attachment: scroll;
+      background-repeat: no-repeat;
+      padding-top: 0px;
+      padding-right: 0px;
+      padding-bottom: 0px;
+      padding-left: 0px;
+      margin-top: 0px;
+      margin-right: 0px;
+      margin-bottom: 0px;
+      margin-left: 0px;
+      height: 50px;
+      width: 15%;
+    }
+
+    #iolqk {
+      background-color: rgba(0, 0, 0, 1);
+      padding-top: 141px;
+      padding-right: 0px;
+      padding-bottom: 164px;
+      padding-left: 0px;
+    }
+
+    #ig5bf {
+      border: none;
+      height: 551px;
+      width: 877px;
+      padding-top: 0px;
+      padding-right: 0px;
+      padding-bottom: 0px;
+      padding-left: 0px;
+      margin-top: 0px;
+      margin-right: 0px;
+      margin-bottom: 0px;
+      margin-left: 0px;
     }
 
     @media (max-width: 992px) {
@@ -74,18 +245,64 @@
     }
 
     @media (max-width: 480px) {
+      #iwp52 {
+        width: 45%;
+      }
+
       #ihng {
         font-size: 50px;
       }
+
+      #ig5bf {
+        width: 310px;
+        height: 589px;
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        margin-top: 63px;
+        margin-right: 52px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+      }
     }
   </style>
-  <script src="path/to/openlime.min.js"></script> <!-- Inserisci qui il percorso corretto -->
 </head>
 
 <body id="iau9">
+  <title>Home</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="generator" content="GrapesJS Studio" />
+  <title>Home</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="generator" content="GrapesJS Studio" />
+  <title>Home</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="generator" content="GrapesJS Studio" />
+  <title>Home</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="generator" content="GrapesJS Studio" />
+  <title>Home</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="generator" content="GrapesJS Studio" />
+  <title>Home</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="generator" content="GrapesJS Studio" />
   <section id="icbnu" class="gjs-section">
     <div id="ixuoi" class="gjs-container">
-      <div id="openlime"></div>
+      <div id="iwp52" class="gjs-image-box"></div>
     </div>
   </section>
   <section id="iwmu" class="gjs-section">
@@ -94,40 +311,9 @@
     </div>
   </section>
   <section id="iolqk" class="gjs-section">
-    <div id="ibn9a" class="gjs-container"></div>
+    <div id="ibn9a" class="gjs-container"><iframe frameborder="0"
+        src="https://scintillating-sunburst-cb9551.netlify.app" width="800" height="800" id="ig5bf"></iframe></div>
   </section>
-
-  <script>
-    async function init() {
-      let layout = await autodetect(); // Funzione per rilevare il layout
-      let normals = await autodetectNormals(layout); // Funzione per rilevare le normali
-
-      var lime = new OpenLIME.Viewer('#openlime', {
-        background: 'black'
-      });
-
-      let layer = new OpenLIME.Layer({
-        layout: layout,
-        type: 'rti',
-        url: 'info.json', // Assicurati che questo file sia disponibile
-        normals: normals
-      });
-
-      lime.canvas.addLayer('RTI', layer);
-      OpenLIME.Skin.setUrl('skin.svg');
-      let ui = new OpenLIME.UIBasic(lime, {
-        skin: 'skin.svg',
-        showLightDirections: true
-      });
-      ui.actions.light.active = true;
-      ui.actions.layers.display = true;
-      lime.camera.maxFixedZoom = 1;
-
-      window.lime = lime; // Aggiunge l'oggetto lime all'ambiente globale
-    }
-
-    init();
-  </script>
 </body>
 
 </html>
