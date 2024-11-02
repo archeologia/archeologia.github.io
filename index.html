@@ -311,9 +311,21 @@
     </div>
   </section>
   <section id="iolqk" class="gjs-section">
-    <div id="ibn9a" class="gjs-container"><iframe frameborder="0"
-        src="https://scintillating-sunburst-cb9551.netlify.app" width="800" height="800" id="ig5bf"></iframe></div>
-  </section>
+  <div id="ibn9a" class="gjs-container">
+    <iframe src="https://scintillating-sunburst-cb9551.netlify.app" 
+            width="100%" height="600px" 
+            id="interactiveIframe" 
+            style="border:none;"></iframe>
+
+    <script>
+      // Rileva movimento del mouse nell'iframe
+      const iframe = document.getElementById('interactiveIframe');
+      iframe.addEventListener('mousemove', () => {
+        iframe.contentWindow.dispatchEvent(new MouseEvent('click'));
+      });
+    </script>
+  </div>
+</section>
 </body>
 
 </html>
