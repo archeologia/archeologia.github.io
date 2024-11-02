@@ -7,9 +7,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="index,follow">
   <meta name="generator" content="GrapesJS Studio">
-  <link rel="stylesheet" href="skin.css"> <!-- Aggiungi il tuo CSS di stile -->
   <style>
-    /* Stile esistente */
     * {
       box-sizing: border-box;
     }
@@ -18,70 +16,92 @@
       margin: 0;
     }
 
-    #openlime {
-      position: relative;
-      height: 600px; /* Imposta l'altezza che preferisci */
-      background-color: black;
+    #iau9 {
+      font-family: Arial, Helvetica, sans-serif;
+      background-image: linear-gradient(180deg, rgba(59, 130, 245, 0.11), white 14%);
+      background-position: 0px 0px;
+      background-size: 100% 100%;
+      background-repeat: repeat;
+      background-attachment: scroll;
+      background-origin: padding-box;
+      color: #475569;
     }
 
-    /* Altri stili... */
+    .gjs-container {
+      width: 90%;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+
+    .gjs-section {
+      display: flex;
+      padding: 50px 0;
+    }
+
+    #iwmu {
+      background-color: rgba(0, 0, 0, 1);
+      padding-top: 50px;
+      padding-right: 0px;
+      padding-bottom: 222px;
+      padding-left: 0px;
+    }
+
+    .gjs-heading {
+      margin: 0;
+    }
+
+    #ihng {
+      color: rgba(255, 255, 255, 1);
+      font-family: Georgia, serif;
+      font-size: 70px;
+      font-weight: 400;
+      padding-top: 250px;
+      padding-right: 0px;
+      padding-bottom: 0px;
+      padding-left: 0px;
+    }
+
+    #openlime {
+      width: 800px;
+      height: 600px;
+      background-color: black; /* Colore di sfondo per il contenitore */
+    }
+
+    @media (max-width: 992px) {
+      .gjs-grid-row {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #ihng {
+        font-size: 50px;
+      }
+    }
   </style>
+  <script src="path/to/openlime.min.js"></script> <!-- Inserisci qui il percorso corretto -->
 </head>
 
 <body id="iau9">
   <section id="icbnu" class="gjs-section">
     <div id="ixuoi" class="gjs-container">
-      <div id="iwp52" class="gjs-image-box"></div>
+      <div id="openlime"></div>
     </div>
   </section>
-  
   <section id="iwmu" class="gjs-section">
     <div id="i34t" class="gjs-container">
       <h1 id="ihng" class="gjs-heading">Archeologia applicata all'RTI</h1>
-      <div id="openlime"></div> <!-- Contenitore per OpenLIME -->
     </div>
   </section>
+  <section id="iolqk" class="gjs-section">
+    <div id="ibn9a" class="gjs-container"></div>
+  </section>
 
-  <script src="openlime.min.js"></script>
   <script>
-    // Funzione per autodetectare il tipo
-    async function autodetect() {
-      let response = await fetch('plane_0.tzi');
-      if (response.status == 200) return "tarzoom";
-
-      response = await fetch('plane_0.dzi');
-      if (response.status == 200) return "deepzoom";
-
-      response = await fetch('planes.tzi');
-      if (response.status == 200) return "itarzoom";
-
-      response = await fetch('plane_0.jpg');
-      if (response.status == 200) return "image";
-
-      alert("Could not detect an RTI here");
-      return "";
-    }
-
-    async function autodetectNormals(layout) {
-      if (layout == 'tarzoom') {
-        let response = await fetch('normals.tzi');
-        if (response.status == 200) return true;
-      }
-      if (layout == 'deepzoom') {
-        let response = await fetch('normals.dzi');
-        if (response.status == 200) return true;
-      }
-      if (layout == 'image') {
-        let response = await fetch('normals.jpg');
-        if (response.status == 200) return true;
-      }
-
-      return false;
-    }
-
     async function init() {
-      let layout = await autodetect();
-      let normals = await autodetectNormals(layout);
+      let layout = await autodetect(); // Funzione per rilevare il layout
+      let normals = await autodetectNormals(layout); // Funzione per rilevare le normali
+
       var lime = new OpenLIME.Viewer('#openlime', {
         background: 'black'
       });
@@ -89,7 +109,7 @@
       let layer = new OpenLIME.Layer({
         layout: layout,
         type: 'rti',
-        url: 'info.json',
+        url: 'info.json', // Assicurati che questo file sia disponibile
         normals: normals
       });
 
@@ -102,10 +122,11 @@
       ui.actions.light.active = true;
       ui.actions.layers.display = true;
       lime.camera.maxFixedZoom = 1;
-      window.lime = lime;
+
+      window.lime = lime; // Aggiunge l'oggetto lime all'ambiente globale
     }
 
-    init(); // Inizializza OpenLIME
+    init();
   </script>
 </body>
 
