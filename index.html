@@ -37,15 +37,15 @@
         .message {
             font-size: 1.5em;
             color: #333;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         .strike {
-            font-size: 1.2em;
-            color: #333;
-            margin-top: 10px;
-        }
-        .no-strike {
-            color: #2a9d8f;
+            font-size: 1em;
+            color: #444;
+            text-align: left;
+            margin: 10px 0;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
         }
     </style>
 </head>
@@ -53,19 +53,19 @@
     <div class="container">
         <h1>Scioperista</h1>
         <div class="date" id="date"></div>
-        <div class="message" id="message">Caricamento informazioni...</div>
-        <div class="strike" id="strikes"></div>
+        <div class="message" id="message">Caricamento delle informazioni...</div>
+        <div id="strikes"></div>
     </div>
 
     <script>
-        // Mostra la data corrente
+        // Funzione per mostrare la data corrente
         const today = new Date().toLocaleDateString('it-IT', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
         document.getElementById('date').innerText = today;
 
-        // Funzione per leggere un feed RSS
+        // Funzione per recuperare e filtrare i dati RSS
         async function fetchRSS() {
-            const proxy = 'https://api.allorigins.win/get?url='; // Proxy per bypassare CORS
-            const feedURL = 'https://scioperi.mit.gov.it/mit2/public/scioperi/rss'; // Inserisci l'URL del feed RSS reale
+            const proxy = 'https://api.allorigins.win/get?url=';
+            const feedURL = 'https://rss.app/feeds/gODWZbDAO2FYC9VD.xml'; // Sostituisci con il link al feed RSS reale
 
             try {
                 const response = await fetch(proxy + encodeURIComponent(feedURL));
@@ -75,11 +75,11 @@
                 displayStrikes(xml);
             } catch (error) {
                 console.error('Errore nel recupero del feed RSS:', error);
-                document.getElementById('message').innerText = 'Errore nel caricamento dei dati.';
+                document.getElementById('message').innerText = 'Errore nel caricamento delle notizie.';
             }
         }
 
-        // Funzione per mostrare i dati sugli scioperi
+        // Funzione per filtrare e visualizzare le notizie sugli scioperi
         function displayStrikes(xml) {
             const items = xml.querySelectorAll('item');
             const strikesDiv = document.getElementById('strikes');
@@ -88,26 +88,25 @@
             strikesDiv.innerHTML = ''; // Resetta il contenuto precedente
 
             items.forEach(item => {
-        const title = item.querySelector('title').textContent.toLowerCase();
-        const description = item.querySelector('description').textContent.toLowerCase();
+                const title = item.querySelector('title').textContent.toLowerCase();
+                const description = item.querySelector('description').textContent.toLowerCase();
 
-        // Controlla se il titolo o la descrizione contengono i termini rilevanti
-        if (
-            title.includes('tper') || description.includes('tper') ||
-            title.includes('marconiexpress') || description.includes('marconiexpress') ||
-            title.includes('trenitalia') || description.includes('trenitalia') ||
-            title.includes('italotreno') || description.includes('italotreno') ||
-            title.includes('sciopero') || description.includes('sciopero') || // Generico
-            title.includes('napoli') || description.includes('napoli') ||
-            title.includes('roma') || description.includes('roma') ||
-            title.includes('milano') || description.includes('milano')// Aggiunto Napoli
-        ) {
-            hasStrike = true;
-            strikesDiv.innerHTML += `<p class="strike">${title}</p>`;
-        }
-    });
+                // Cerca termini rilevanti
+                if (
+                    title.includes('napoli') || description.includes('napoli') ||
+                    title.includes('sciopero') || description.includes('sciopero') ||
+                ) {
+                    hasStrike = true;
+                    strikesDiv.innerHTML += `
+                        <div class="strike">
+                            <strong>${item.querySelector('title').textContent}</strong>
+                            <p>${item.querySelector('description').textContent}</p>
+                        </div>
+                    `;
+                }
+            });
 
-            // Mostra un messaggio appropriato
+            // Messaggio finale
             const messageDiv = document.getElementById('message');
             if (hasStrike) {
                 messageDiv.innerText = 'Scioperi in corso oggi:';
@@ -117,7 +116,7 @@
             }
         }
 
-        // Richiama la funzione per leggere il feed RSS
+        // Avvia il recupero del feed RSS
         fetchRSS();
     </script>
 </body>
