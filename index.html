@@ -98,7 +98,9 @@
             title.includes('trenitalia') || description.includes('trenitalia') ||
             title.includes('italotreno') || description.includes('italotreno') ||
             title.includes('sciopero') || description.includes('sciopero') || // Generico
-            title.includes('napoli') || description.includes('napoli') // Aggiunto Napoli
+            title.includes('napoli') || description.includes('napoli') ||
+            title.includes('roma') || description.includes('roma') ||
+            title.includes('milano') || description.includes('milano')// Aggiunto Napoli
         ) {
             hasStrike = true;
             strikesDiv.innerHTML += `<p class="strike">${title}</p>`;
