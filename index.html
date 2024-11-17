@@ -93,8 +93,11 @@
 
                 // Cerca termini rilevanti
                 if (
-                    title.includes('napoli') || description.includes('napoli') ||
-                    title.includes('sciopero') || description.includes('sciopero') ||
+                    title.includes('tper') || description.includes('tper') ||
+                    title.includes('marconiexpress') || description.includes('marconiexpress') ||
+                    title.includes('trenitalia') || description.includes('trenitalia') ||
+                    title.includes('italotreno') || description.includes('italotreno') ||
+                    title.includes('sciopero') || description.includes('sciopero') // Generico
                 ) {
                     hasStrike = true;
                     strikesDiv.innerHTML += `
