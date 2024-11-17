@@ -65,7 +65,7 @@
         // Funzione per leggere un feed RSS
         async function fetchRSS() {
             const proxy = 'https://api.allorigins.win/get?url='; // Proxy per bypassare CORS
-            const feedURL = 'URL_DEL_FEED_RSS'; // Inserisci l'URL del feed RSS reale
+            const feedURL = 'https://scioperi.mit.gov.it/mit2/public/scioperi/rss'; // Inserisci l'URL del feed RSS reale
 
             try {
                 const response = await fetch(proxy + encodeURIComponent(feedURL));
@@ -88,15 +88,22 @@
             strikesDiv.innerHTML = ''; // Resetta il contenuto precedente
 
             items.forEach(item => {
-                const title = item.querySelector('title').textContent;
-                const description = item.querySelector('description').textContent.toLowerCase();
+        const title = item.querySelector('title').textContent.toLowerCase();
+        const description = item.querySelector('description').textContent.toLowerCase();
 
-                // Controlla se il titolo o la descrizione contengono i termini rilevanti
-                if (description.includes('tper') || description.includes('marconiexpress') || description.includes('trenitalia') || description.includes('italotreno')) {
-                    hasStrike = true;
-                    strikesDiv.innerHTML += `<p class="strike">${title}</p>`;
-                }
-            });
+        // Controlla se il titolo o la descrizione contengono i termini rilevanti
+        if (
+            title.includes('tper') || description.includes('tper') ||
+            title.includes('marconiexpress') || description.includes('marconiexpress') ||
+            title.includes('trenitalia') || description.includes('trenitalia') ||
+            title.includes('italotreno') || description.includes('italotreno') ||
+            title.includes('sciopero') || description.includes('sciopero') || // Generico
+            title.includes('napoli') || description.includes('napoli') // Aggiunto Napoli
+        ) {
+            hasStrike = true;
+            strikesDiv.innerHTML += `<p class="strike">${title}</p>`;
+        }
+    });
 
             // Mostra un messaggio appropriato
             const messageDiv = document.getElementById('message');
