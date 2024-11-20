@@ -65,7 +65,7 @@
         // Funzione per recuperare e filtrare i dati RSS
         async function fetchRSS() {
             const proxy = 'https://api.allorigins.win/get?url=';
-            const feedURL = 'https://rss.app/feeds/gODWZbDAO2FYC9VD.xml'; // Sostituisci con il link al feed RSS reale
+            const feedURL = 'https://rss.app/feeds/Qbl40vzIUXZX4wN7.xml'; // Sostituisci con il link al feed RSS reale
 
             try {
                 const response = await fetch(proxy + encodeURIComponent(feedURL));
@@ -81,43 +81,45 @@
 
         // Funzione per filtrare e visualizzare le notizie sugli scioperi
         function displayStrikes(xml) {
-            const items = xml.querySelectorAll('item');
-            const strikesDiv = document.getElementById('strikes');
-            let hasStrike = false;
+    const items = xml.querySelectorAll('item');
+    const strikesDiv = document.getElementById('strikes');
+    let hasStrike = false;
 
-            strikesDiv.innerHTML = ''; // Resetta il contenuto precedente
+    strikesDiv.innerHTML = ''; // Resetta il contenuto precedente
 
-            items.forEach(item => {
-                const title = item.querySelector('title').textContent.toLowerCase();
-                const description = item.querySelector('description').textContent.toLowerCase();
+    items.forEach(item => {
+        const title = item.querySelector('title').textContent.toLowerCase();
+        const description = item.querySelector('description').textContent.toLowerCase();
+        const link = item.querySelector('link').textContent; // Recupera il link
 
-                // Cerca termini rilevanti
-                if (
-                    title.includes('tper') || description.includes('tper') ||
-                    title.includes('marconiexpress') || description.includes('marconiexpress') ||
-                    title.includes('trenitalia') || description.includes('trenitalia') ||
-                    title.includes('italotreno') || description.includes('italotreno') ||
-                    title.includes('sciopero') || description.includes('sciopero') // Generico
-                ) {
-                    hasStrike = true;
-                    strikesDiv.innerHTML += `
-                        <div class="strike">
-                            <strong>${item.querySelector('title').textContent}</strong>
-                            <p>${item.querySelector('description').textContent}</p>
-                        </div>
-                    `;
-                }
-            });
-
-            // Messaggio finale
-            const messageDiv = document.getElementById('message');
-            if (hasStrike) {
-                messageDiv.innerText = 'Scioperi in corso oggi:';
-            } else {
-                messageDiv.innerText = 'Oggi si viaggia con la fortuna!';
-                strikesDiv.innerHTML = ''; // Se non ci sono scioperi, svuota il contenuto
-            }
+        // Cerca termini rilevanti
+        if (
+            title.includes('tper') || description.includes('tper') ||
+            title.includes('marconiexpress') || description.includes('marconiexpress') ||
+            title.includes('trenitalia') || description.includes('trenitalia') ||
+            title.includes('italotreno') || description.includes('italotreno') ||
+            title.includes('sciopero') || description.includes('sciopero') // Generico
+        ) {
+            hasStrike = true;
+            strikesDiv.innerHTML += `
+                <div class="strike">
+                    <strong>${item.querySelector('title').textContent}</strong>
+                    <p>${item.querySelector('description').textContent}</p>
+                    <a href="${link}" target="_blank" style="color: #e63946; text-decoration: none;">Leggi di più</a>
+                </div>
+            `;
         }
+    });
+
+    // Messaggio finale
+    const messageDiv = document.getElementById('message');
+    if (hasStrike) {
+        messageDiv.innerText = 'Scioperi in corso oggi:';
+    } else {
+        messageDiv.innerText = 'Oggi si viaggia con la fortuna!';
+        strikesDiv.innerHTML = ''; // Se non ci sono scioperi, svuota il contenuto
+    }
+}
 
         // Avvia il recupero del feed RSS
         fetchRSS();
